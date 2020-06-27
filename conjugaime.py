@@ -1,12 +1,13 @@
 from collections import OrderedDict
 
+
 class Auxiliar():
     def __init__(self, verbo):
-        self.sufixo = verbo[-2:]
+        self.sufixo = verbo[-2:]  #FIXME: desinências/morfemas verbais terminados em "-mos"?
         self.verbo = verbo
         self.pessoas = ["eu", "tu", "ela/ele", "nós", "vós", "elas/eles"]
 
-        if self.sufixo not in ['ar','er','ir']:
+        if self.sufixo not in ['ar','er','ir']:  #FIXME: verbos da 4ª conjugação, terminados em "-or"
             print("Sua palavra não é um verbo")
 
     def resposta(self, irregulares, sufixos):
@@ -14,9 +15,11 @@ class Auxiliar():
         if self.verbo not in irregulares:
 
             radical = self.verbo[:-2]
+            print(f"TESTE RADICAL: {radical}")
 
             for pessoa, sufixo in zip(self.pessoas, sufixos):
-                conjugado[pessoa] = "{radical}{sufixo}".format(radical=radical,sufixo=sufixo)
+                # conjugado[pessoa] = "{radical}{sufixo}".format(radical=radical,sufixo=sufixo)
+                conjugado[pessoa] = f"{radical}{sufixo}"
 
         else:
             for pessoa, verbo in zip(self.pessoas, irregulares[self.verbo]):
@@ -29,7 +32,7 @@ class Indicativo(Auxiliar):
         irregulares = {}
 
         if self.sufixo == 'ar':
-            irregulares["dar"] = ["dou", "dás", "dá", "damos", "dais", " 	dão"]
+            irregulares["dar"] = ["dou", "dás", "dá", "damos", "dais", "dão"]
             irregulares["estar"] = ["estou","estás","está","estamos","estais","estão"]
             irregulares["passear"] = ["passeio","passeias","passeia","passeamos", "passeais","passeiam"]
             irregulares["averiguar"] = ["averíguo","averíguas","averígua","averiguamos", "averiguais","averíguam"]
@@ -41,17 +44,22 @@ class Indicativo(Auxiliar):
         elif self.sufixo == 'ir':
             sufixos = ["o", "es", "e", "mos", "is", "em"]
 
-        return self.resposta(irregulares,sufixos)
+        return self.resposta(irregulares, sufixos)
 
     def pret_per(self):
         irregulares = {}
+        radical = self.verbo[:-2]
+        # radical[-1] == "g"
 
         if self.sufixo == 'ar':
             irregulares["dar"] = ["dei","deste","deu","demos","destes","deram"]
             irregulares["estar"] =  ["estive", "estiveste", "esteve", "estivemos", "estivestes", "estiveram",]
             irregulares["passear"] = ["passeei", "passeaste", "passeou", "passeamos", "passeastes", "passearam"]
-
-            sufixos = ["ei", "aste", "ou", "ámos", "astes", "aram"]
+            
+            if radical[-1] == "g" or radical[-1] == "q":  # Resolve o problema do "xurugei" (verbo "xurugar")
+                sufixos = ["uei", "aste", "ou", "ámos", "astes", "aram"]    
+            else:
+                sufixos = ["ei", "aste", "ou", "ámos", "astes", "aram"]
 
         elif self.sufixo == 'er':
             sufixos = ["i", "este", "eu", "emos", "estes", "eram"]
