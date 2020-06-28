@@ -4,15 +4,19 @@ Este projeto é um fork do [conjugai-me](https://github.com/dunossauro/conjugai-
 
 #### Metas:
 
-- Indicativo
-  - Verbos regulares (DONE)
+- Modo Indicativo
+  - Verbos regulares (DONE!)
   - Verbos irregulares (TODO)
-- Conjuntivo/Subjuntivo
-- Imperativo
+- Modo Conjuntivo/Subjuntivo
+  - Verbos regulares (**DOING**)
+  - Verbos irregulares (TODO)
+- Modo Imperativo
+  - Verbos regulares (TODO)
+  - Verbos irregulares (TODO)
 
 #### Checklist/Roadmap
 - [x] Verbo "xurugar" veio sem o "u" em "xurug**u**ei" (1ª pess. do pret. perf. do ind.). Consertar
-- [ ] 
+- [ ] Consertar o tamanho do slice dos radicais na classe `Subjuntivo()`
 
 
 
