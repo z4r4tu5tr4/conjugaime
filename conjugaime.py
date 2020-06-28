@@ -33,9 +33,9 @@ class Indicativo(Auxiliar):
 
         if self.sufixo == 'ar':
             irregulares["dar"] = ["dou", "dás", "dá", "damos", "dais", "dão"]
-            irregulares["estar"] = ["estou","estás","está","estamos","estais","estão"]
-            irregulares["passear"] = ["passeio","passeias","passeia","passeamos", "passeais","passeiam"]
-            irregulares["averiguar"] = ["averíguo","averíguas","averígua","averiguamos", "averiguais","averíguam"]
+            irregulares["estar"] = ["estou", "estás", "está", "estamos", "estais", "estão"]
+            irregulares["passear"] = ["passeio", "passeias", "passeia", "passeamos", "passeais", "passeiam"]
+            irregulares["averiguar"] = ["averíguo", "averíguas", "averígua", "averiguamos", "averiguais", "averíguam"]
 
             sufixos = ["o", "as", "a", "amos", "ais", "am"]
 
@@ -51,8 +51,8 @@ class Indicativo(Auxiliar):
         radical = self.verbo[:-2]
 
         if self.sufixo == 'ar':
-            irregulares["dar"] = ["dei","deste","deu","demos","destes","deram"]
-            irregulares["estar"] =  ["estive", "estiveste", "esteve", "estivemos", "estivestes", "estiveram",]
+            irregulares["dar"] = ["dei", "deste", "deu", "demos", "destes", "deram"]
+            irregulares["estar"] = ["estive", "estiveste", "esteve", "estivemos", "estivestes", "estiveram",]
             irregulares["passear"] = ["passeei", "passeaste", "passeou", "passeamos", "passeastes", "passearam"]
             
             if radical[-1] == "g" or radical[-1] == "q":
@@ -117,18 +117,39 @@ class Indicativo(Auxiliar):
 
 
 class Subjuntivo(Auxiliar):
-    def presente():
-        pass
-    def pret_imper():
-        pass
-    def futuro():
-        pass
+    def __init__(self, verbo):
+        super().__init__(verbo)
+        
+        self.pessoas = ["que eu", "que tu", "que ela/ele", "que nós", "que vós", "que elas/eles"]
+    
+    def presente(self):
+        irregulares = {}
+        radical = self.verbo[:-2]
+
+        if self.sufixo == 'ar':
+            if radical[-1] == "g" or radical[-1] == "q":
+                sufixos = ["ue", "ues", "ue", "uemos", "ueis", "uem"]
+            else:
+                sufixos = ["e", "es", "e", "emos", "eis", "em"]
+
+        elif self.sufixo == 'er':
+            sufixos = []
+        elif self.sufixo == 'ir':
+            sufixos = []
+    
+        return self.resposta(irregulares, sufixos)
 
 
-class Imperativo(Auxiliar):
-    def afirmativo():
-        pass
-    def negativo():
-        pass
-    def infinitivo():
-        pass
+    # def pret_imperf_subj():
+    #     pass
+    # def fut_subj():
+    #     pass
+
+
+# class Imperativo(Auxiliar):
+#     def afirmativo():
+#         pass
+#     def negativo():
+#         pass
+#     def infinitivo():
+#         pass
