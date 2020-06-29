@@ -2,7 +2,7 @@
 Este projeto é um fork do [conjugai-me](https://github.com/dunossauro/conjugai-me) do [Eduardo Mendes](https://github.com/dunossauro): uma API Python que conjuga verbos em português.
 
 
-#### Metas
+#### TODO:
 
 - Modo Indicativo
   - Verbos regulares (DONE!)
@@ -13,6 +13,35 @@ Este projeto é um fork do [conjugai-me](https://github.com/dunossauro/conjugai-
 - Modo Imperativo
   - Verbos regulares (TODO)
   - Verbos irregulares (TODO)
+- Indicativo
+- Conjuntivo
+- Imperativo
+- Refinar a API
+- Adicionar todos os verbos irregulares
+
+
+## Desenvolvimento
+
+O projeto usa Poetry para gerenciar a instalação dos pacotes e o tox como test-runner
+
+### Rodar os testes e a cobertura
+```bash
+tox
+```
+
+
+### Ver a cobertura dos testes
+```bash
+tox -e cov
+```
+
+> Caso algum teste quebre os resultados não estarão disponiveis
+
+### Para ver a cobertura no browser
+
+```bash
+firefox htmlcov/index.html
+```
 
 #### Checklist/Roadmap
 - [x] Verbo "xurugar" veio sem o "u" em "xurug**u**ei" (1ª pess. do pret. perf. do ind.). Consertar
