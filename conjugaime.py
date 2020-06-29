@@ -117,18 +117,25 @@ class Indicativo(Auxiliar):
 
 
 class Subjuntivo(Auxiliar):
-    def presente():
-        pass
-    def pret_imper():
-        pass
-    def futuro():
-        pass
+    def __init__(self, verbo):
+        super().__init__(verbo)
+        
+        self.pessoas = ["que eu", "que tu", "que ela/ele", "que nós", "que vós", "que elas/eles"]
+    
+        
+    def presente(self):
+        irregulares = {}
+        # radical = self.verbo[:-3]
 
+        if self.sufixo == 'ar':
+            if self.radical[-1] == "g" or self.radical[-1] == "q":
+                sufixos = ["ue", "ues", "ue", "uemos", "ueis", "uem"]
+            else:
+                sufixos = ["e", "es", "e", "emos", "eis", "em"]
 
-class Imperativo(Auxiliar):
-    def afirmativo():
-        pass
-    def negativo():
-        pass
-    def infinitivo():
-        pass
+        elif self.sufixo == 'er':
+            sufixos = ["a", "as", "a", "amos", "ais", "am"]
+        elif self.sufixo == 'ir':
+            sufixos = []
+    
+        return self.resposta(irregulares, sufixos)
