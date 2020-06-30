@@ -1,13 +1,13 @@
 from collections import OrderedDict
 
 
-class Auxiliar():
+class Auxiliar:
     def __init__(self, verbo):
         self.sufixo = verbo[-2:]  #FIXME: desinências/morfemas verbais terminados em "-mos"?
         self.verbo = verbo
         self.pessoas = ["eu", "tu", "ela/ele", "nós", "vós", "elas/eles"]
 
-        if self.sufixo not in ['ar','er','ir']:  #FIXME: verbos da 4ª conjugação, terminados em "-or"
+        if self.sufixo not in ['ar', 'er', 'ir']:
             print("Sua palavra não é um verbo")
 
     def resposta(self, irregulares, sufixos):
@@ -32,10 +32,31 @@ class Indicativo(Auxiliar):
         irregulares = {}
 
         if self.sufixo == 'ar':
-            irregulares["dar"] = ["dou", "dás", "dá", "damos", "dais", "dão"]
-            irregulares["estar"] = ["estou", "estás", "está", "estamos", "estais", "estão"]
-            irregulares["passear"] = ["passeio", "passeias", "passeia", "passeamos", "passeais", "passeiam"]
-            irregulares["averiguar"] = ["averíguo", "averíguas", "averígua", "averiguamos", "averiguais", "averíguam"]
+            irregulares["dar"] = ["dou", "dás", "dá", "damos", "dais", " 	dão"]
+            irregulares["estar"] = [
+                "estou",
+                "estás",
+                "está",
+                "estamos",
+                "estais",
+                "estão",
+            ]
+            irregulares["passear"] = [
+                "passeio",
+                "passeias",
+                "passeia",
+                "passeamos",
+                "passeais",
+                "passeiam",
+            ]
+            irregulares["averiguar"] = [
+                "averíguo",
+                "averíguas",
+                "averígua",
+                "averiguamos",
+                "averiguais",
+                "averíguam",
+            ]
 
             sufixos = ["o", "as", "a", "amos", "ais", "am"]
 
@@ -51,14 +72,30 @@ class Indicativo(Auxiliar):
         radical = self.verbo[:-2]
 
         if self.sufixo == 'ar':
-            irregulares["dar"] = ["dei", "deste", "deu", "demos", "destes", "deram"]
-            irregulares["estar"] = ["estive", "estiveste", "esteve", "estivemos", "estivestes", "estiveram",]
-            irregulares["passear"] = ["passeei", "passeaste", "passeou", "passeamos", "passeastes", "passearam"]
-            
-            if radical[-1] == "g" or radical[-1] == "q":
-                sufixos = ["uei", "aste", "ou", "ámos", "astes", "aram"]    
-            else:
-                sufixos = ["ei", "aste", "ou", "ámos", "astes", "aram"]
+            irregulares["dar"] = [
+                "dei",
+                "deste",
+                "deu",
+                "demos",
+                "destes",
+                "deram",
+            ]
+            irregulares["estar"] = [
+                "estive",
+                "estiveste",
+                "esteve",
+                "estivemos",
+                "estivestes",
+                "estiveram",
+            ]
+            irregulares["passear"] = [
+                "passeei",
+                "passeaste",
+                "passeou",
+                "passeamos",
+                "passeastes",
+                "passearam",
+            ]
 
         elif self.sufixo == 'er':
             sufixos = ["i", "este", "eu", "emos", "estes", "eram"]
@@ -122,18 +159,19 @@ class Subjuntivo(Auxiliar):
         
         self.pessoas = ["que eu", "que tu", "que ela/ele", "que nós", "que vós", "que elas/eles"]
     
+        
     def presente(self):
         irregulares = {}
-        radical = self.verbo[:-2]
+        # radical = self.verbo[:-3]
 
         if self.sufixo == 'ar':
-            if radical[-1] == "g" or radical[-1] == "q":
+            if self.radical[-1] == "g" or self.radical[-1] == "q":
                 sufixos = ["ue", "ues", "ue", "uemos", "ueis", "uem"]
             else:
                 sufixos = ["e", "es", "e", "emos", "eis", "em"]
 
         elif self.sufixo == 'er':
-            sufixos = []
+            sufixos = ["a", "as", "a", "amos", "ais", "am"]
         elif self.sufixo == 'ir':
             sufixos = []
     
