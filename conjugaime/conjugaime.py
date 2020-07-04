@@ -162,7 +162,7 @@ class Subjuntivo(Auxiliar):
         
     def presente(self):
         irregulares = {}
-        # radical = self.verbo[:-3]
+        radical = self.verbo[:-3]
 
         if self.sufixo == 'ar':
             if self.radical[-1] == "g" or self.radical[-1] == "q":
