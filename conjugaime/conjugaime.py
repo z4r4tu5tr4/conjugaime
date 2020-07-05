@@ -3,7 +3,7 @@ from collections import OrderedDict
 
 class Auxiliar:
     def __init__(self, verbo):
-        self.sufixo = verbo[-2:]  #FIXME: desinências/morfemas verbais terminados em "-mos"?
+        self.sufixo = verbo[-2:]
         self.verbo = verbo
         self.pessoas = ["eu", "tu", "ela/ele", "nós", "vós", "elas/eles"]
 
@@ -160,8 +160,8 @@ class Subjuntivo(Auxiliar):
         self.pessoas = ["que eu", "que tu", "que ela/ele", "que nós", "que vós", "que elas/eles"]
 
     def presente(self):
-        irregulares = {}
         self.radical = self.verbo[:-2]
+        irregulares = {}
 
         if self.sufixo == 'ar':
             if self.radical[-1] == "g" or self.radical[-1] == "q":
@@ -171,9 +171,10 @@ class Subjuntivo(Auxiliar):
 
         elif self.sufixo == 'er':
             sufixos = ["a", "as", "a", "amos", "ais", "am"]
+        
         elif self.sufixo == 'ir':
-            sufixos = []
-    
+            sufixos = ["a", "as", "a", "amos", "ais", "am"]
+
         return self.resposta(irregulares, sufixos)
 
 
