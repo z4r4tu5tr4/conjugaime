@@ -158,11 +158,12 @@ class Subjuntivo(Auxiliar):
         super().__init__(verbo)
         
         self.pessoas = ["que eu", "que tu", "que ela/ele", "que nós", "que vós", "que elas/eles"]
+        self.sufixo = verbo[-2:]
     
         
     def presente(self):
         irregulares = {}
-        radical = self.verbo[:-3]
+        self.radical = self.verbo[:-3]
 
         if self.sufixo == 'ar':
             if self.radical[-1] == "g" or self.radical[-1] == "q":
