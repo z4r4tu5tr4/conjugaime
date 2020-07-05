@@ -15,7 +15,6 @@ class Auxiliar:
         if self.verbo not in irregulares:
 
             radical = self.verbo[:-2]
-            print(f"TESTE RADICAL: {radical}")
 
             for pessoa, sufixo in zip(self.pessoas, sufixos):
                 conjugado[pessoa] = f"{radical}{sufixo}"
@@ -157,13 +156,12 @@ class Subjuntivo(Auxiliar):
     def __init__(self, verbo):
         super().__init__(verbo)
         
-        self.pessoas = ["que eu", "que tu", "que ela/ele", "que nós", "que vós", "que elas/eles"]
         self.sufixo = verbo[-2:]
-    
-        
+        self.pessoas = ["que eu", "que tu", "que ela/ele", "que nós", "que vós", "que elas/eles"]
+
     def presente(self):
         irregulares = {}
-        self.radical = self.verbo[:-3]
+        self.radical = self.verbo[:-2]
 
         if self.sufixo == 'ar':
             if self.radical[-1] == "g" or self.radical[-1] == "q":
