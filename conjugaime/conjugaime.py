@@ -25,7 +25,7 @@ class Auxiliar:
 
         return conjugado
 
-
+    
 class Indicativo(Auxiliar):
     def presente(self):
         irregulares = {}
@@ -159,7 +159,7 @@ class Subjuntivo(Auxiliar):
         self.sufixo = verbo[-2:]
         self.pessoas = ["que eu", "que tu", "que ela/ele", "que nós", "que vós", "que elas/eles"]
 
-    def presente(self):
+    def presente(self):  # que eu xurugue
         self.radical = self.verbo[:-2]
         irregulares = {}
 
@@ -177,12 +177,32 @@ class Subjuntivo(Auxiliar):
 
         return self.resposta(irregulares, sufixos)
 
+    def preterito_imperfeito(self):  # se eu xurugasse
+        irregulares = {}
 
-    # def pret_imperf_subj():
-    #     pass
-    # def fut_subj():
-    #     pass
+        if self.sufixo == 'ar':
+            sufixos = ["asse", "asses", "asse", "ássemos", "ásseis", "assem"]
 
+        elif self.sufixo == 'er':
+            sufixos = ["esse", "esses", "esse", "êssemos", "êsseis", "essem"]
+
+        elif self.sufixo == 'ir':
+            sufixos = ["isse", "isses", "isse", "íssemos", "ísseis", "issem"]
+
+        return self.resposta(irregulares, sufixos)
+
+    def futuro(self):  # quando eu xurugar
+        irregulares = {}
+
+        if self.sufixo == "ar":
+            sufixos = ["ar", "ares", "ar", "armos", "ardes", "arem"]
+
+        elif self.sufixo == "er":
+            sufixos = ["er", "eres", "er", "ermos", "erdes", "erem"]
+
+        elif self.sufixo == "ir":
+            sufixos = ["ir", "ires", "ir", "irmos", "irdes", "irem"]
+        return self.resposta(irregulares, sufixos)
 
 # class Imperativo(Auxiliar):
 #     def afirmativo():
