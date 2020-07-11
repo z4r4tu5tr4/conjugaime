@@ -46,6 +46,8 @@ firefox htmlcov/index.html
 #### Checklist/Roadmap
 - [x] Verbo "xurugar" veio sem o "u" em "xurug**u**ei" (1ª pess. do pret. perf. do ind.). Consertar
 - [ ] Consertar o tamanho do slice dos radicais na classe `Subjuntivo()`
+- [ ] Escrever testes para outras pessoas do verbo além da 1ª
+- [ ] Escrever testes para verbos com radicais terminados em `-g`, como "xurugar"
 
 
 
