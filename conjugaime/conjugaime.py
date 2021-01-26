@@ -17,9 +17,7 @@ class Auxiliar:
             radical = self.verbo[:-2]
 
             for pessoa, sufixo in zip(self.pessoas, sufixos):
-                conjugado[pessoa] = "{radical}{sufixo}".format(
-                    radical=radical, sufixo=sufixo
-                )
+                conjugado[pessoa] = f"{radical}{sufixo}"
 
         else:
             for pessoa, verbo in zip(self.pessoas, irregulares[self.verbo]):
@@ -70,6 +68,7 @@ class Indicativo(Auxiliar):
 
     def pret_per(self):
         irregulares = {}
+        radical = self.verbo[:-2]
 
         if self.sufixo == 'ar':
             irregulares["dar"] = [
@@ -96,8 +95,6 @@ class Indicativo(Auxiliar):
                 "passeastes",
                 "passearam",
             ]
-
-            sufixos = ["ei", "aste", "ou", "ámos", "astes", "aram"]
 
         elif self.sufixo == 'er':
             sufixos = ["i", "este", "eu", "emos", "estes", "eram"]
@@ -156,22 +153,41 @@ class Indicativo(Auxiliar):
 
 
 class Subjuntivo(Auxiliar):
-    def presente():
-        pass
+    def __init__(self, verbo):
+        super().__init__(verbo)
+        
+        self.sufixo = verbo[-2:]
+        self.pessoas = ["que eu", "que tu", "que ela/ele", "que nós", "que vós", "que elas/eles"]
 
-    def pret_imper():
-        pass
+    def presente(self):
+        self.radical = self.verbo[:-2]
+        irregulares = {}
 
-    def futuro():
-        pass
+        if self.sufixo == 'ar':
+            if self.radical[-1] == "g" or self.radical[-1] == "q":
+                sufixos = ["ue", "ues", "ue", "uemos", "ueis", "uem"]
+            else:
+                sufixos = ["e", "es", "e", "emos", "eis", "em"]
+
+        elif self.sufixo == 'er':
+            sufixos = ["a", "as", "a", "amos", "ais", "am"]
+        
+        elif self.sufixo == 'ir':
+            sufixos = ["a", "as", "a", "amos", "ais", "am"]
+
+        return self.resposta(irregulares, sufixos)
 
 
-class Imperativo(Auxiliar):
-    def afirmativo():
-        pass
+    # def pret_imperf_subj():
+    #     pass
+    # def fut_subj():
+    #     pass
 
-    def negativo():
-        pass
 
-    def infinitivo():
-        pass
+# class Imperativo(Auxiliar):
+#     def afirmativo():
+#         pass
+#     def negativo():
+#         pass
+#     def infinitivo():
+#         pass

@@ -6,6 +6,7 @@ authors = ["dunossauro <mendesxeduardo@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
+pylama = "^7.7.1"
 
 [tool.poetry.dev-dependencies]
 tox = "^3.16.0"
